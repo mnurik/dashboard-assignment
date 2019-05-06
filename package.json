@@ -1,0 +1,14 @@
+{
+  "name": "callstats-dashboard-assignment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "knex": "^0.14.4",
+    "sqlite3": "^3.1.13"
+  }
+}
