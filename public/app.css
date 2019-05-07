@@ -1,3 +1,10 @@
 th, td {
   border: 1px solid black;
+  min-width: 50px;
+  padding: 5px;
+  text-align: center;
+}
+
+th {
+  background-color: grey;
 }
