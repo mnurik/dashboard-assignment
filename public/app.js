@@ -1,10 +1,7 @@
 "use strict";
 
-// document.onreadystatechange(() => {
-// IIFE
-(async () => {
-  const container = document.getElementById('app');
-
+// IIFE for data fetch
+const data = (async () => {
   const resFields = await fetch('/fields')
   const fields = await resFields.json();
 
@@ -14,12 +11,23 @@
   const resAppId = await fetch('/app/100697065')
   const appId = await resAppId.json();
 
-  const resAppId1 = await fetch('/app/100697065/sentQuality')
-  const appId1 = await resAppId1.json();
-  const sorted = appId1.map(({ sentQuality }) => sentQuality);
+  const resAppId1SentQuality = await fetch('/app/100697065/sentQuality')
+  const appId1SentQuality = await resAppId1SentQuality.json();
 
-  const max = Math.max(...sorted);
-  const min = Math.min(...sorted);
+  return { fields, appIds, appId, appId1SentQuality };
+})();
+
+/*
+        Table Way
+*/
+(async (data) => {
+  const { fields, appId, appId1SentQuality } = await data;
+  const container = document.getElementById('app');
+
+  const sentQualities = appId1SentQuality.map(({ sentQuality }) => sentQuality);
+
+  const max = Math.max(...sentQualities);
+  const min = Math.min(...sentQualities);
 
   const trs = Object.entries(appId).map(([_, values]) => {
     const tds = fields.map(field => {
@@ -52,6 +60,27 @@
                 </table>
           `;
 
-  container.innerHTML = table;
-})()
-// });
+  container.insertAdjacentHTML('afterend', table);
+})(data);
+
+/*
+        Graphical Way
+*/
+(async (data) => {
+  const { appId1SentQuality } = await data;
+  const container = document.getElementById('app2');
+
+  const sentQualities = appId1SentQuality.map(({ sentQuality }) => sentQuality);
+
+  const max = Math.max(...sentQualities);
+  const min = Math.min(...sentQualities);
+
+  const levels = sentQualities.map(quality => {
+    const height = (quality / (max - min)) * 100;
+    return `<div title="${quality}" style="height: ${height}px"></div>`
+  });
+
+  const graphic = `<div class="graphic">${levels.join('')}</div>`;
+
+  container.insertAdjacentHTML('afterend', graphic);
+})(data);

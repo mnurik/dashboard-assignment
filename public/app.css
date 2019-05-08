@@ -1,3 +1,12 @@
+:root {
+  --graphic-color: #97a3b4;
+  --graphic-width: 50px;
+}
+
+body>div {
+  margin: 10px;
+}
+
 th, td {
   border: 1px solid black;
   min-width: 50px;
@@ -7,4 +16,34 @@ th, td {
 
 th {
   background-color: grey;
+}
+
+.graphic {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  border-left: 1px dotted var(--graphic-color, grey);
+  border-bottom: 1px dotted var(--graphic-color, grey);
+  margin-left: var(--graphic-width, 50px);
+}
+
+.graphic::before {
+  content: '100%';
+  width: var(--graphic-width, 50px);
+  position: absolute;
+  top: 0;
+  left: calc(var(--graphic-width, 50px) * -1);
+}
+
+.graphic::after {
+  content: '0%';
+  width: var(--graphic-width, 50px);
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--graphic-width, 50px) * -1);
+}
+
+.graphic>div {
+  width: var(--graphic-width, 50px);
+  background-color: var(--graphic-color, grey);
 }
