@@ -25,6 +25,7 @@ th {
   border-left: 1px dotted var(--graphic-color, grey);
   border-bottom: 1px dotted var(--graphic-color, grey);
   margin-left: var(--graphic-width, 50px);
+  margin-bottom: 30px;
 }
 
 .graphic::before {
@@ -46,4 +47,10 @@ th {
 .graphic>div {
   width: var(--graphic-width, 50px);
   background-color: var(--graphic-color, grey);
+}
+
+.graphic__title {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
 }

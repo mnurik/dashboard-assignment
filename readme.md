@@ -1,9 +1,7 @@
 # callstats.io Dashboard assignment
 
 ## About
-This repository provides a sqlite database and API for the assignment data.
-
-Feel free to edit the API, create your own or use the source assignment.csv file.
+The task required no dependencies, so I had to survive somehow without new FE technologies. User has two options to show metrics. I am not master of visualization, please forgive me if visualization is wrong or too simple.
 
 ## Installing
 
@@ -12,9 +10,15 @@ Dependencies: Node.js, Yarn/npm.
 `yarn install`
 
 ## Running
-`yarn start`
+```sh
+yarn start
+```
+or
+```sh
+npm start
+```
 
-The API is available at http://localhost:8081.
+Then open http://localhost:8081/ to see your app.
 
 ## API routes
 All routes use the GET method. 
