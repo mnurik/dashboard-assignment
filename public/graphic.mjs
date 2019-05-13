@@ -18,5 +18,5 @@ export default async (data) => {
 
   const graphic = `<div class="graphic">${levels.join('')}</div>`;
 
-  container.insertAdjacentHTML("beforeend", graphic);
+  container.innerHTML = graphic;
 };
