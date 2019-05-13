@@ -5,9 +5,13 @@
 </head>
 
 <body>
-  <div id="app2"></div>
+  <select id="appIdsSelect">
+    <option disabled selected value="-1">Choose App Id</option>
+  </select>
+
   <div id="app"></div>
-  <script src="app.js"></script>
+
+  <script type="module" src="app.js"></script> <!-- I had to survive without Webpack :) -->
 </body>
 
 </html>
