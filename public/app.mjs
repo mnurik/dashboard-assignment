@@ -11,7 +11,7 @@ import getListData from './utilities/getListData.mjs';
   const appIds = await resAppIds.json();
 
   const options = appIds.map(({ appID }) => `<option>${appID}</option>`);
-  appIdSelector.insertAdjacentHTML("beforeend", options.join(""));
+  appIdSelector.insertAdjacentHTML("beforeend", options.join("")); // Add options to appId dropdown
 
   const fieldsRes = await fetch('/fields');
   const fields = await fieldsRes.json();
